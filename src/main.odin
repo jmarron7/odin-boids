@@ -4,15 +4,15 @@ import "core:fmt"
 import "core:math"
 import rl "vendor:raylib"
 
-NUM_BOIDS :: 100
+NUM_BOIDS :: 200
 
 WIDTH :: 2040
 HEIGHT :: 1080
 
 MAX_SPEED :: 5.0
 SEP_WEIGHT :: 0.5
-ALIGN_WEIGHT :: 1.0
-COH_WEIGHT :: 0.2
+ALIGN_WEIGHT :: 0.5
+COH_WEIGHT :: 0.1
 PERCEPTION_RADIUS :: 25.0
 
 Boid :: struct {
@@ -21,7 +21,6 @@ Boid :: struct {
     acceleration: rl.Vector2,
 }
 
-
 main :: proc() {
     rl.InitWindow(WIDTH, HEIGHT, "Boids Simulation")
     rl.SetTargetFPS(60)
@@ -29,6 +28,7 @@ main :: proc() {
     flock := init_boids()
     
     for !rl.WindowShouldClose() {
+        fmt.println("FPS: ", rl.GetFPS())
         update_boids(flock)
         rl.BeginDrawing()
         rl.ClearBackground(rl.BLACK)
