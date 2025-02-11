@@ -28,7 +28,6 @@ main :: proc() {
     flock := init_boids()
     
     for !rl.WindowShouldClose() {
-        fmt.println("FPS: ", rl.GetFPS())
         update_boids(flock)
         rl.BeginDrawing()
         rl.ClearBackground(rl.BLACK)
