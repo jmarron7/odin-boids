@@ -5,6 +5,7 @@ import "core:math"
 import rl "vendor:raylib"
 
 NUM_BOIDS :: 200
+BOID_SIZE :: 8.0
 
 // Window dimensions
 WIDTH :: 2040
@@ -155,7 +156,7 @@ cohesion :: proc(boids: []Boid, boid: Boid) -> rl.Vector2 {
 }
 
 draw_boids :: proc(boids: []Boid) {
-    size: f32 = 8.0
+    size: f32 = BOID_SIZE
 
     for boid, idx in boids {
         vel_normalized := rl.Vector2Normalize(boid.velocity)
